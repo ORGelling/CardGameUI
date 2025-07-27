@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <random>
 
-Deck::Deck(int numDecks) : numDecks(numDecks), totalCards(52 * numDecks), deckSize(52 * numDecks) {
+Deck::Deck(int numDecks) : numDecks(numDecks), deckSize(52 * numDecks), totalCards(52 * numDecks) {
     deck = createDeck(numDecks);
 }
 
@@ -41,14 +41,14 @@ void Deck::shuffle() {
     std::shuffle(deck, deck + deckSize, g);
 }
 
-Card* Deck::getDeck() const {
+Card* Deck::getDeck() {
     return deck;
 }
 
-int Deck::getTotalCards() const {
+int Deck::getTotalCards() {
     return totalCards;
 }
 
-int Deck::getDeckSize() const {
+int Deck::getDeckSize() {
     return deckSize;
 }

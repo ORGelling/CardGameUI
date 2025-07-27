@@ -1,27 +1,29 @@
-// filepath: /cardgame/cardgame/src/deck.h
+// filepath:
 #ifndef DECK_H
 #define DECK_H
 
-#include "card.h"
-#include <vector>
-#include <algorithm>
+#include "cards.h"
+// #include <algorithm>
 #include <cstdlib>
 
 class Deck {
 private:
     int numDecks;
+    int deckSize;
     int totalCards;
-    std::vector<Card> deck;
+    Card* deck;
 
 public:
     Deck(int numDecks = 1);
     ~Deck();
 
-    void createDeck();
+    Card* createDeck(int numDecks);
+    Card* getDeck();
+    int getTotalCards();
+    int getDeckSize();
     void shuffle();
     Card drawCard();
     int getDeckSize() const;
-    const std::vector<Card>& getDeck() const;
 };
 
 #endif // DECK_H

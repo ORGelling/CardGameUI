@@ -2,7 +2,7 @@
 #ifndef HAND_H
 #define HAND_H
 
-#include "card.h"
+#include "cards.h"
 #include "deck.h"
 #include <algorithm>
 #include <iostream>
@@ -13,15 +13,15 @@ private:
     int handSize;
 
 public:
-    Hand(int size);
+    Hand(Card** currentDeck, int& deckSize, int handSize);
     ~Hand();
 
-    void sortHand();
-    void drawHand(Deck& deck);
+    Card* drawHand(Card** currentDeck, int& deckSize, int handSize);
+    void sortHand(Card* hand, int handSize);
     void show() const;
     int getScore() const;
     int getHandSize() const;
-    bool isBusted() const;
+    bool isBusted();
 };
 
 #endif // HAND_H
