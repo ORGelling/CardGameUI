@@ -2,26 +2,37 @@
 #ifndef HAND_H
 #define HAND_H
 
-#include "cards.h"
 #include "deck.h"
-#include <algorithm>
-#include <iostream>
 
 class Hand {
+
 private:
+
     Card* hand;
     int handSize;
 
 public:
-    Hand(Card** currentDeck, int& deckSize, int handSize);
-    ~Hand();
 
-    Card* drawHand(Card** currentDeck, int& deckSize, int handSize);
-    void sortHand(Card* hand, int handSize);
+    int getHandSize() const {
+        return handSize; // Return the size of the hand
+    };
+    void setHandSize(int size) {
+        handSize = size; // Set the size of the hand
+    };
+    Card* getHand() const {
+        return hand; // Return the hand
+    };
+    void sortHand();
+    Hand(Deck& deck, int size);
+    ~Hand() {
+        delete[] hand; // Clean up memory
+    };
+    void drawCard(Deck& deck, int draws = 1);
     void show() const;
+    void showSplit() const;
+    void showSize() const;
     int getScore() const;
-    int getHandSize() const;
-    bool isBusted();
+    void showScore() const;
+    bool isBusted() const;
 };
-
 #endif // HAND_H

@@ -15,16 +15,22 @@ struct Card {
 	int sort;
 };
 
+class Cards {
+private:
+	struct Card;
+};
+
 class Deck {
 
 private:
 
 	int numDecks;
-	int totalCards;
+	int fullSize;
 	int deckSize;
 	Card* deck;
 
 public:
+	
 
 	Card* createDeck(int numDecks = 1) {
 		const char* ranks[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
@@ -51,7 +57,7 @@ public:
 		return newDeck;
 	};
 
-	Deck(int numDecks = 1) : numDecks(numDecks), totalCards(52 * numDecks), deckSize(52 * numDecks) {
+	Deck(int numDecks = 1) : numDecks(numDecks), fullSize(52 * numDecks), deckSize(52 * numDecks) {
 		deck = createDeck(numDecks);
 	}
 
@@ -64,7 +70,7 @@ public:
 	}
 
 	int getTotalCards() const {
-		return totalCards;
+		return fullSize;
 	}
 
 };
@@ -110,7 +116,7 @@ public:
 	}
 
 	Hand(int size) : handSize(size) {
-		hand = drawHand(handSize); // Initialize hand with the specified size
+		hand = drawHand(size); // Initialise hand with the specified size
 	}
 
 	~Hand() {

@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "cards.h"
+#include "deck.h"
 #include "deck.h"
 #include "hand.h"
 
