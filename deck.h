@@ -1,29 +1,19 @@
-// filepath:
-#ifndef DECK_H
-#define DECK_H
+// filepath: /cardgame/cardgame/src/card.h
+#ifndef CARDS_H
+#define CARDS_H
+#include <string>
 
-#include "cards.h"
-// #include <algorithm>
-#include <cstdlib>
-
-class Deck {
-private:
-    int numDecks;
-    int deckSize;
-    int totalCards;
-    Card* deck;
-
-public:
-    Deck(int numDecks = 1);
-    ~Deck();
-
-    Card* createDeck(int numDecks);
-    Card* getDeck();
-    int getTotalCards();
-    int getDeckSize();
-    void shuffle();
-    Card drawCard();
-    int getDeckSize() const;
+struct Card {
+    std::string rank;
+    std::string suit;
+    int points; // Points for blackjack
+    int sort;
 };
 
-#endif // DECK_H
+// class Cards {
+
+//private:
+//    struct Card;
+//};
+
+#endif
