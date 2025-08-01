@@ -4,10 +4,9 @@ Feel free to have a browse. For now I am keeping it simple but I plan to add act
 
 From hereon this is a bit of a log of things I am considering to add, with explanations by copilot of what they are and how they could work.
 
-
-
-
-
+##################################################################################################################################
+##################################################################################################################################
+##################################################################################################################################
 
 Overview of QGraphicsView
 
