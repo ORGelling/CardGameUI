@@ -2,6 +2,13 @@ This is the full stack version of my cardgame program (blackjack for now)!
 
 Feel free to have a browse. For now I am keeping it simple but I plan to add actual playing cards with the QGraphicsView Framework and a QGraphicsScene.
 
+From hereon this is a bit of a log of things I am considering to add, with explanations by copilot of what they are and how they could work.
+
+
+
+
+
+
 Overview of QGraphicsView
 
 QGraphicsView is a widget in the Qt framework that displays the contents of a QGraphicsScene. It is part of the Graphics View Framework, which allows for the visualization of 2D graphics in a scrollable viewport.
