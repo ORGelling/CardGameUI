@@ -78,3 +78,10 @@ void Deck::sortDeck() {
         return a.sort < b.sort;
     });
 };
+
+void Deck::reset() {
+    delete[] deck;
+    setRand();
+    deck = createDeck(numDecks);
+    deckSize = totalCards;
+};

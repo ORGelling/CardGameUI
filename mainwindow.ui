@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    color: black;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="buttonHit">
     <property name="geometry">
@@ -156,6 +161,39 @@
       <width>113</width>
       <height>24</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="viewTextPlayer">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>320</y>
+      <width>511</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    background-color: rgb(119, 118, 123);
+    color: rgb(0, 0, 0);
+	font: 700 italic 44pt &quot;Z003&quot;;
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="viewTextDealer">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>80</y>
+      <width>511</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	font: 700 italic 44pt &quot;Z003&quot;;
+    background-color: rgb(119, 118, 123);
+}</string>
     </property>
    </widget>
   </widget>

@@ -50,3 +50,210 @@ Example code from copilot:
     scene->addEllipse(10, 10, 100, 100, QPen(Qt::black), QBrush(Qt::green));
     scene->addText("Hello, QGraphicsView!");
     
+More resources and examples:
+
+To ensure that your graphics and text boxes only appear after starting the game in Qt Creator, you can set their visibility to false initially and then change it to true when the game starts. Use the setVisible(true) method on your graphics and text box objects at the appropriate point in your game logic. forums.raspberrypi.com pythonguis.com
+Controlling Visibility of Graphics and Text in Qt Creator
+
+To ensure that your graphics and text boxes only appear after starting the game in Qt Creator, you can manage their visibility using the following methods.
+Using QWidget Visibility
+
+    Set Initial Visibility: In your UI setup, set the visibility of your graphics and text widgets to hidden. This can be done in the Qt Designer or programmatically.
+
+    Show Widgets on Game Start: When the game starts, use the show() method to make these widgets visible.
+
+Example Code Snippet
+
+Here’s a simple example of how to implement this in your code:
+
+cpp
+
+    // Assuming you have a QGraphicsView and a QLabel for text
+    ui->graphicsView->hide(); // Hide graphics view initially
+    ui->label->hide(); // Hide text label initially
+    
+    // Function to start the game
+    void startGame() {
+    ui->graphicsView->show(); // Show graphics view
+    ui->label->show(); // Show text label
+    // Additional game start logic here
+    }
+
+Using QGraphicsScene
+
+If you are using a QGraphicsScene, you can also control the visibility of items within the scene:
+
+    Add Items to Scene: Initially, do not add your graphics items to the scene.
+
+    Add Items on Game Start: When the game starts, add the items to the scene and set their visibility.
+
+Example Code Snippet for QGraphicsScene
+
+cpp
+
+    // Assuming you have a QGraphicsScene
+    QGraphicsScene *scene = new QGraphicsScene(this);
+    
+    // Function to start the game
+    void startGame() {
+        // Add items to the scene
+        scene->addItem(new QGraphicsRectItem(0, 0, 100, 100)); // Example item
+        ui->graphicsView->setScene(scene); // Set the scene to the view
+        ui->graphicsView->show(); // Show the graphics view
+    }
+
+Fonts and stylesheet() stuff:
+
+To change the font and size of the text in a QLineEdit in Qt Creator, you can use the setStyleSheet() method with a style sheet string, for example: lineEdit->setStyleSheet("font-size: 14pt; font-family: Arial;");. This will apply the specified font size and family to the QLineEdit widget.
+
+    QLineEdit *lineEdit = new QLineEdit(this);
+    lineEdit->setStyleSheet("QLineEdit { font-size: 14pt; font-family: Arial; }");    
+
+    lineEdit->setStyleSheet("QLineEdit { font-size: 14pt; font-family: Arial; } QLineEdit::placeholder { font-size: 12pt; }");
+
+    QFont font("Arial", 14);
+    lineEdit->setFont(font);
+    
+    QWidget {background-color:black;}
+    
+1. Colored Suit Letters in QLineEdit (With HTML)
+
+QLineEdit supports rich text via HTML—if you use setText() with HTML tags and set the textFormat to Qt::RichText.
+This allows you to color the suit letters differently.
+Example
+C++
+
+QString cardString = "<span style='color:black;'>A</span><span style='color:red;'>&hearts;</span>";
+ui->lineEdit->setTextFormat(Qt::RichText);
+ui->lineEdit->setText(cardString);
+
+But: QLineEdit only displays rich text if you set setTextFormat(Qt::RichText). Otherwise, it will show the raw HTML.
+Color Example for Suits
+C++
+
+QString cardStr;
+for (const Card& c : playerHand) {
+    QString suitColor;
+    if (c.suit == "H" || c.suit == "D")
+        suitColor = "red";
+    else
+        suitColor = "black";
+    cardStr += QString("<span style='color:%1;'>%2%3</span> ")
+        .arg(suitColor)
+        .arg(QString::fromStdString(c.rank))
+        .arg(QString::fromStdString(c.suit));
+}
+ui->lineEdit->setTextFormat(Qt::RichText);
+ui->lineEdit->setText(cardStr);
+
+    You can use Unicode characters for suits, e.g. ♥, ♦, ♣, ♠.
+
+2. Using QGraphicsView and Images
+
+This is a more advanced and flexible way—the best for an actual card game UI.
+
+QGraphicsView + QGraphicsScene let you place images ("items") anywhere.
+You’d use QGraphicsPixmapItem to add card images.
+Steps:
+
+    Prepare Images:
+        Find or create images for each card (e.g., AS.png for Ace of Spades).
+        Put all your card images in your project directory.
+
+    Add QGraphicsView to Your Form.
+
+    Create a QGraphicsScene:
+    C++
+
+QGraphicsScene* scene = new QGraphicsScene(this);
+ui->graphicsView->setScene(scene);
+
+Add Card Images to the Scene:
+C++
+
+    QPixmap cardPixmap(":/cards/AS.png"); // Use Qt Resource System or direct path
+    QGraphicsPixmapItem* item = scene->addPixmap(cardPixmap);
+    item->setPos(x, y); // Position card
+
+    Move/Arrange Images as Needed.
+
+Examples for adding colours to card names and explanation for QGraphicsView
+
+Example Code (simplified):
+C++
+
+QGraphicsScene* scene = new QGraphicsScene(this);
+ui->graphicsView->setScene(scene);
+
+QString cardFile = ":/cards/AS.png"; // Or your card image path
+QPixmap cardPixmap(cardFile);
+scene->addPixmap(cardPixmap)->setPos(0, 0);
+// Repeat for each card, adjusting position for spacing
+
+You can animate, move, or interact with these items for more advanced effects.
+
+1. Set Your QLineEdit to Accept Rich Text
+
+By default, QLineEdit in Qt does not render HTML as rich text—it treats it as plain text.
+But since Qt 5.14, you can use setTextFormat(Qt::RichText) to make the line edit interpret your string as rich text.
+
+You must do this before setting the text:
+C++
+
+ui->playerCardsLineEdit->setTextFormat(Qt::RichText);
+
+Do this in your constructor or initialization code (e.g., in MainWindow or wherever you set up your UI).
+2. Format Your Card Output as HTML
+
+When you create the string to display, use HTML <span> tags to color the suits:
+C++
+
+QString cardStr;
+for (const Card& c : playerHand) {
+    QString suitSymbol;
+    QString color;
+    // Use Unicode symbols for suits
+    if (c.suit == "H")      { suitSymbol = "&#9829;"; color = "red";   } // ♥
+    else if (c.suit == "D") { suitSymbol = "&#9830;"; color = "red";   } // ♦
+    else if (c.suit == "C") { suitSymbol = "&#9827;"; color = "black"; } // ♣
+    else if (c.suit == "S") { suitSymbol = "&#9824;"; color = "black"; } // ♠
+    cardStr += QString("<span style='color:black;'>%1</span><span style='color:%2;'>%3</span> ")
+                  .arg(QString::fromStdString(c.rank))
+                  .arg(color)
+                  .arg(suitSymbol);
+}
+
+3. Set the Text on the QLineEdit
+
+Once you have the formatted string:
+C++
+
+ui->playerCardsLineEdit->setText(cardStr);
+
+4. Where to Put This Code
+
+    If you’re updating the cards after a button press (e.g., "Hit" or "Deal"), put this code in the corresponding slot function.
+    If you want to initialize the display at startup, put it in your window’s constructor after setupUi(this).
+
+Example in a Slot (e.g., MainWindow.cpp):
+C++
+
+void MainWindow::updatePlayerCards(const Hand& playerHand) {
+    ui->playerCardsLineEdit->setTextFormat(Qt::RichText);
+
+    QString cardStr;
+    for (const Card& c : playerHand) {
+        QString suitSymbol, color;
+        if (c.suit == "H")      { suitSymbol = "&#9829;"; color = "red";   }
+        else if (c.suit == "D") { suitSymbol = "&#9830;"; color = "red";   }
+        else if (c.suit == "C") { suitSymbol = "&#9827;"; color = "black"; }
+        else if (c.suit == "S") { suitSymbol = "&#9824;"; color = "black"; }
+        cardStr += QString("<span style='color:black;'>%1</span><span style='color:%2;'>%3</span> ")
+                      .arg(QString::fromStdString(c.rank))
+                      .arg(color)
+                      .arg(suitSymbol);
+    }
+    ui->playerCardsLineEdit->setText(cardStr);
+}
+
+Call this function whenever you want to update the display.

@@ -2,11 +2,11 @@
 
 void BlackJack::hit() {
     playerHand.drawCard(deck); // Draw a card for the player
-    playerHand.show();
+    //playerHand.show();
     if (playerHand.isBusted()) {
-        cout << "Player busted with score: " << playerHand.getScore() << endl;
+        ;
     } else {
-        cout << "Player's new score: " << playerHand.getScore() << endl;
+        ;
     }
 };
 
@@ -48,7 +48,7 @@ int BlackJack::quit() {
     return 0; // Exit the game
 };
 
-void BlackJack::status() const {
+void BlackJack::cardStatus() const {
     cout << "Player's hand: ";
     playerHand.show();
     cout << "Player's score: " << playerHand.getScore() << endl;
@@ -72,10 +72,22 @@ void BlackJack::victor() const {
 };
 
 BlackJack::BlackJack(int numDecks, int handSize) :		deck(numDecks), playerHand(deck, handSize), dealerHand(deck, handSize) {
+    playable = true;
+};
+
+void BlackJack::reset() {
+    deck.reset();
+    playerHand.redraw(deck);
+    dealerHand.redraw(deck);
+    playable = true;
+};
+
+/*
+BlackJack::BlackJackFunction(int numDecks, int handSize) :		deck(numDecks), playerHand(deck, handSize), dealerHand(deck, handSize) {
     // Initialize the game with a deck and player hand
-    cout << "Player's hand: ";
-    playerHand.show();
-    playerHand.showScore();
+    //cout << "Player's hand: ";
+    //playerHand.show();
+    //playerHand.showScore();
     int choice;
     playable = true;
     while (playable) {
@@ -112,6 +124,7 @@ BlackJack::BlackJack(int numDecks, int handSize) :		deck(numDecks), playerHand(d
     victor(); // Determine the winner after the game ends
     cout << "Game over." << endl;
 };
+*/
 
 void BlackJack::setPlay() {
     playable = true;
@@ -120,3 +133,31 @@ void BlackJack::setPlay() {
 void BlackJack::stopPlay() {
     playable = false;
 }
+
+string BlackJack::getPlayer() const {
+    return playerHand.getHand();
+};
+
+string BlackJack::getDealer() const {
+    return dealerHand.getHand();
+};
+
+bool BlackJack::status() const {
+    return playable;
+};
+
+bool BlackJack::playerBust() const{
+    return playerHand.isBusted();
+};
+
+bool BlackJack::dealerBust() const{
+    return dealerHand.isBusted();
+};
+
+int BlackJack::scorePlayer() const{
+    return playerHand.getScore();
+};
+
+int BlackJack::scoreDealer() const{
+    return dealerHand.getScore();
+};

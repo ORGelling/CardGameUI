@@ -18,11 +18,19 @@ public:
     void playerTurn();
     void dealerTurn();
     int quit();
-    void status() const;
+    void cardStatus() const;
     void victor() const;
     BlackJack(int numDecks = 1, int handSize = 2);
     void setPlay();
     void stopPlay();
+    string getPlayer() const;
+    string getDealer() const;
+    bool status() const;
+    void reset();
+    bool playerBust() const;
+    bool dealerBust() const;
+    int scorePlayer() const;
+    int scoreDealer() const;
 };
 
 #endif // BLACKJACK_H

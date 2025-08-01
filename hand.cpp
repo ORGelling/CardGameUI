@@ -7,7 +7,7 @@ void Hand::sortHand() {
     });
 };
 
-Hand::Hand(Deck& deck, int size) : handSize(size) {
+Hand::Hand(Deck& deck, int size) : handSize(size), startHandSize(size) {
     hand = new Card[handSize]; // Initialize hand with the specified size
     for (int i = 0; i < handSize; i++) {
         hand[i] = deck.drawCard(); // Draw a card from the deck
@@ -36,6 +36,14 @@ void Hand::show() const {
         cout << hand[i].rank << hand[i].suit << " ";
     }
     cout << endl;
+};
+
+string Hand::getHand() const {
+    string showPlayerHand;
+    for (int i = 0; i < handSize; i++) {
+        showPlayerHand += hand[i].rank + hand[i].suit + " ";
+    }
+    return showPlayerHand;
 };
 
 void Hand::showSplit() const {
@@ -70,4 +78,9 @@ void Hand::showScore() const {
 
 bool Hand::isBusted() const {
     return getScore() > 21; // Check if the hand is busted
+};
+
+void Hand::redraw(Deck& deck) {
+    handSize = 0;
+    drawCard(deck, startHandSize);
 };

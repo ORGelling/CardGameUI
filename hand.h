@@ -10,6 +10,7 @@ private:
 
     Card* hand;
     int handSize;
+    int startHandSize;
 
 public:
 
@@ -19,7 +20,7 @@ public:
     void setHandSize(int size) {
         handSize = size; // Set the size of the hand
     };
-    Card* getHand() const {
+    Card* getHandFull() const {
         return hand; // Return the hand
     };
     void sortHand();
@@ -29,10 +30,12 @@ public:
     };
     void drawCard(Deck& deck, int draws = 1);
     void show() const;
+    string getHand() const;
     void showSplit() const;
     void showSize() const;
     int getScore() const;
     void showScore() const;
     bool isBusted() const;
+    void redraw(Deck& deck);
 };
 #endif // HAND_H

@@ -53,6 +53,7 @@ public:
     int getTotalCards() {
         return totalCards;
     }
+    void reset();
 };
 
 #endif
