@@ -77,23 +77,23 @@ BlackJack::BlackJack(int numDecks, int handSize) :		deck(numDecks), playerHand(d
     playerHand.show();
     playerHand.showScore();
     int choice;
-    bool play = true;
-    while (play) {
+    playable = true;
+    while (playable) {
         cout << "What do you wish to do? \n1: hit\n2: stand\n3: quit\n4: status" << endl;
         cin >> choice;
         switch (choice) {
         case 1: // Assuming 1 is for "hit"
             hit();
             if (playerHand.isBusted()) {
-                play = false; // Exit the loop if player busts
+                playable = false; // Exit the loop if player busts
             }
             break;
         case 2: // Assuming 2 is for "stand"
-            play = false; // Exit the loop if player stands
+            playable = false; // Exit the loop if player stands
             stand();
             break;
         case 3: // Assuming 3 is for "quit"
-            play = false; // Exit the loop if player quits
+            playable = false; // Exit the loop if player quits
             quit();
             break;
         case 4: // Assuming 4 is for "status"
@@ -112,3 +112,11 @@ BlackJack::BlackJack(int numDecks, int handSize) :		deck(numDecks), playerHand(d
     victor(); // Determine the winner after the game ends
     cout << "Game over." << endl;
 };
+
+void BlackJack::setPlay() {
+    playable = true;
+}
+
+void BlackJack::stopPlay() {
+    playable = false;
+}

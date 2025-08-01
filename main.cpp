@@ -1,8 +1,4 @@
 #include "mainwindow.h"
-#include "deck.h"
-#include "deck.h"
-#include "hand.h"
-
 #include <QApplication>
 
 int main(int argc, char *argv[])

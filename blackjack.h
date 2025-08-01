@@ -9,6 +9,7 @@ private:
     Deck deck;
     Hand playerHand;
     Hand dealerHand;
+    bool playable;
 
 public:
     void hit();
@@ -20,6 +21,8 @@ public:
     void status() const;
     void victor() const;
     BlackJack(int numDecks = 1, int handSize = 2);
+    void setPlay();
+    void stopPlay();
 };
 
 #endif // BLACKJACK_H
