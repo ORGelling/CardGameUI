@@ -1,4 +1,4 @@
-This is the full stack version of my cardgame program (blackjack for now)!
+This is the full stack version of my cardgame program (blackjack for now)! I have a bunch of functions that will be removed due to not being in use, and a couple more will be added still. AM starting to get decently pleased with how this is developing. It is mainly a practice project to learn about GUI design through something fun and interactive.
 
 Feel free to have a browse. For now I am keeping it simple but I plan to add actual playing cards with the QGraphicsView Framework and a QGraphicsScene.
 
