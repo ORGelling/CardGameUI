@@ -21,6 +21,8 @@ void MainWindow::on_buttonDeal_clicked()
     game.reset();
     ui->viewTextPlayer->setText(QString::fromStdString(game.getPlayer()));
     ui->scoreUser->setText(QString::number(game.scorePlayer()));
+    ui->viewTextDealer->setText("");
+    ui->scoreDealer->setText("");
 }
 
 void MainWindow::on_buttonHit_clicked()
@@ -29,7 +31,7 @@ void MainWindow::on_buttonHit_clicked()
         game.hit();
         ui->viewTextPlayer->setText(QString::fromStdString(game.getPlayer()));
         ui->scoreUser->setText(QString::number(game.scorePlayer()));
-    };
+    }
     if (game.playerBust()) {
         game.stopPlay();
     }
@@ -37,7 +39,11 @@ void MainWindow::on_buttonHit_clicked()
 
 void MainWindow::on_buttonStand_clicked()
 {
-
+    if (game.status()) {
+        game.stand();
+        ui->viewTextDealer->setText(QString::fromStdString(game.getDealer()));
+        ui->scoreDealer->setText(QString::number(game.scoreDealer()));
+    }
 }
 
 void MainWindow::on_buttonQuit_clicked()

@@ -3,16 +3,29 @@
 void BlackJack::hit() {
     playerHand.drawCard(deck); // Draw a card for the player
     //playerHand.show();
-    if (playerHand.isBusted()) {
-        ;
-    } else {
-        ;
-    }
+    // if (playerHand.isBusted()) {
+    //     ;
+    // } else {
+    //     ;
+    // }
 };
 
 void BlackJack::stand() {
-    cout << "Player stands with score: " << playerHand.getScore() << endl;
-    dealerTurn(); // Proceed to dealer's turn
+    // dealerHand.show();
+    stopPlay();
+    while (dealerHand.getScore() < 17) { // Dealer hits until score is 17 or higher
+        dealerHand.drawCard(deck);
+        // dealerHand.show();
+        // cout << "Dealer's new score: " << dealerHand.getScore() << endl;
+    }
+    if (!dealerHand.isBusted()) {
+        // cout << "Dealer stands" << endl;
+    }
+    //if (dealerHand.isBusted()) {
+    //	cout << "Dealer busted" << endl;
+    //} else {
+    //	cout << "Dealer stands" << endl;
+    //}
 };
 
 void BlackJack::playRound() {
