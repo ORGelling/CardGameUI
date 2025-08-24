@@ -21,11 +21,6 @@ void BlackJack::stand() {
     if (!dealerHand.isBusted()) {
         // cout << "Dealer stands" << endl;
     }
-    //if (dealerHand.isBusted()) {
-    //	cout << "Dealer busted" << endl;
-    //} else {
-    //	cout << "Dealer stands" << endl;
-    //}
 };
 
 void BlackJack::playRound() {
