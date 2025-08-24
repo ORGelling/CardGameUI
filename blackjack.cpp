@@ -95,50 +95,6 @@ void BlackJack::reset() {
     playable = true;
 };
 
-/*
-BlackJack::BlackJackFunction(int numDecks, int handSize) :		deck(numDecks), playerHand(deck, handSize), dealerHand(deck, handSize) {
-    // Initialize the game with a deck and player hand
-    //cout << "Player's hand: ";
-    //playerHand.show();
-    //playerHand.showScore();
-    int choice;
-    playable = true;
-    while (playable) {
-        cout << "What do you wish to do? \n1: hit\n2: stand\n3: quit\n4: status" << endl;
-        cin >> choice;
-        switch (choice) {
-        case 1: // Assuming 1 is for "hit"
-            hit();
-            if (playerHand.isBusted()) {
-                playable = false; // Exit the loop if player busts
-            }
-            break;
-        case 2: // Assuming 2 is for "stand"
-            playable = false; // Exit the loop if player stands
-            stand();
-            break;
-        case 3: // Assuming 3 is for "quit"
-            playable = false; // Exit the loop if player quits
-            quit();
-            break;
-        case 4: // Assuming 4 is for "status"
-            status();
-            break;
-        default:
-            cout << "Invalid choice. Please enter 1 for hit, 2 for stand, 3 for quit, or 4 for status." << endl;
-            break;
-        };
-        //if (choice == 3) break; // Exit the loop if the player chooses to quit
-        //if (choice == 2) break; // If player stands, proceed to dealer's turn
-    };
-    //if (choice == 2) {
-    //	dealerTurn(); // Proceed to dealer's turn if player stands
-    //}
-    victor(); // Determine the winner after the game ends
-    cout << "Game over." << endl;
-};
-*/
-
 void BlackJack::setPlay() {
     playable = true;
 }
