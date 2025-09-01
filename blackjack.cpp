@@ -8,7 +8,6 @@ void BlackJack::hit() {
     // } else {
     //     ;
     // }
-    // Lalalalala
 };
 
 void BlackJack::stand() {

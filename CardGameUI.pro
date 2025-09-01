@@ -13,13 +13,15 @@ SOURCES += \
     deck.cpp \
     hand.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    styling.cpp
 
 HEADERS += \
     blackjack.h \
     deck.h \
     hand.h \
-    mainwindow.h
+    mainwindow.h \
+    styling.h
 
 
 FORMS += \
