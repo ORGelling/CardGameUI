@@ -14,6 +14,7 @@ SOURCES += \
     hand.cpp \
     main.cpp \
     mainwindow.cpp \
+    showresults.cpp \
     styling.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     deck.h \
     hand.h \
     mainwindow.h \
+    showresults.h \
     styling.h
 
 

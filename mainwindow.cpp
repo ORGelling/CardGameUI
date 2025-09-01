@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "styling.h"
+#include "showresults.h"
 //#include "deck.h"
 //#include "hand.h"
 
@@ -41,6 +42,7 @@ void MainWindow::on_buttonHit_clicked()
     }
     if (game.playerBust()) {
         game.stopPlay();
+        ShowResults::showResults(this, " You busted!");
     }
 }
 
